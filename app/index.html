@@ -13,6 +13,7 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+    <base href="/">
   </head>
   <body ng-app="stravaWorkoutsApp">
     <!--[if lt IE 7]>
@@ -33,7 +34,6 @@
       <div class="progress">
         <div class="complete" ng-repeat="workout in bikes"></div>
       </div>
-
 
       <h2>Runs</h2>
        <div class="progress">
@@ -64,6 +64,7 @@
     <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/aws-sdk-js/dist/aws-sdk.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
