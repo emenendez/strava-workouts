@@ -52,7 +52,7 @@ angular.module('stravaWorkoutsApp')
 
                 for (var i = 0; i < data.length; ++i) {
                   var activity = data[i];
-                  
+
                   if (!$scope.activities[activity.type]) {
                     $scope.activities[activity.type] = []
                   }

@@ -25,20 +25,11 @@
         <h1>Weekly Workouts</h1>
       </div>
   
-      <h2>Swims</h2>
-      <div class="progress">
-        <div class="complete" ng-repeat="workout in activities.Swim"></div>
-      </div>
+      <progress-bar title="Swims" workouts="activities.Swim"></progress-bar>
 
-      <h2>Bikes</h2>
-      <div class="progress">
-        <div class="complete" ng-repeat="workout in activities.Ride"></div>
-      </div>
+      <progress-bar title="Bikes" workouts="activities.Ride"></progress-bar>
 
-      <h2>Runs</h2>
-       <div class="progress">
-        <div class="complete" ng-repeat="workout in activities.Run"></div>
-      </div>
+      <progress-bar title="Runs" workouts="activities.Run"></progress-bar>
 
       <div class="footer">
         <p>built with <span class="glyphicon glyphicon-heart"></span> on <a href="https://www.strava.com/athletes/2085359">Strava</a> and <a href="https://github.com/emenendez/strava-workouts">GitHub</a></p>

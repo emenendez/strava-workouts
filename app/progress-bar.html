@@ -1,0 +1,4 @@
+<h2>{{ title }}</h2>
+<div class="progress">
+	<div class="complete" ng-repeat="workout in workouts | limitTo: 3">{{ workout.name }}</div>
+</div>

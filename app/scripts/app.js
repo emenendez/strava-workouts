@@ -8,8 +8,21 @@
  *
  * Main module of the application.
  */
-angular
+var app = angular
   .module('stravaWorkoutsApp', [
     'ngResource',
     'ngTouch'
   ]);
+
+app.directive('progressBar', function () {
+    return {
+        restrict: 'E', //E = element, A = attribute, C = class, M = comment         
+        scope: {
+            //@ reads the attribute value, = provides two-way binding, & works with functions
+            title: '@',
+            workouts: '='
+        },
+        templateUrl: 'progress-bar.html'
+        // link: function ($scope, element, attrs) { } //DOM manipulation
+    };
+});
