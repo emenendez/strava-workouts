@@ -43,20 +43,28 @@ angular.module('stravaWorkoutsApp')
                 params: {
                   access_token: access_token,
                   callback: 'JSON_CALLBACK',
-                  before: 1432425600
+                  before: 1432425600  // TOOD: figure out correct timestamp
                 }
               }).
               success(function(data, status, headers, config) {
-                console.log(data);
+                // 7. Iterate through list of activities and add to proper scope variable
+                $scope.activities = {};
+
+                for (var i = 0; i < data.length; ++i) {
+                  var activity = data[i];
+                  
+                  if (!$scope.activities[activity.type]) {
+                    $scope.activities[activity.type] = []
+                  }
+                  $scope.activities[activity.type].push(activity);
+                }
+
               }).
               error(function(data, status, headers, config) {
                 // TODO: handle gracefully
                 console.log(data);
               });
 
-            $scope.swims = [1, 2];
-            $scope.bikes = [1, 2, 3];
-            $scope.runs = [1];
           }
         }
       );
