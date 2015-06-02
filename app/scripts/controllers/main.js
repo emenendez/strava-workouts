@@ -13,6 +13,15 @@ angular.module('stravaWorkoutsApp')
   })
   .controller('MainCtrl', function ($scope, $location, $window, $http) {
 
+    // Figure out date of this past Monday
+    var monday = new Date();
+    var delta = monday.getDay() - 1;
+    if (delta === -1) delta = 6;
+    monday.setDate(monday.getDate() - delta);
+    monday.setHours(0, 0, 0, 0);
+
+    $scope.start = monday;
+
   	// Authenticate with Strava
   	// 2. Strava redirects here with access code
   	if ($location.search().code) {
@@ -43,7 +52,7 @@ angular.module('stravaWorkoutsApp')
                 params: {
                   access_token: access_token,
                   callback: 'JSON_CALLBACK',
-                  after: 1432425600  // TOOD: figure out correct timestamp
+                  after: (Math.floor(monday.getTime() / 1000))
                 }
               }).
               success(function(data, status, headers, config) {
