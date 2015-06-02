@@ -80,8 +80,7 @@ angular.module('stravaWorkoutsApp')
   	}
   	else {
   		// 1. Page redirects to strava auth endpoint
-  		// window.location = 'https://www.strava.com/oauth/authorize?client_id=6518&response_type=code&redirect_uri=http://emenendez.github.io/strava-workouts/';
-  		$window.location.href = 'https://www.strava.com/oauth/authorize?client_id=6518&response_type=code&redirect_uri=http://localhost:9000/';
+  		$window.location.href = 'https://www.strava.com/oauth/authorize?client_id=6518&response_type=code&redirect_uri=http://emenendez.github.io/strava-workouts/';
   		return;
   	}
   	
