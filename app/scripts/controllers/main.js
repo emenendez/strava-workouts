@@ -8,8 +8,11 @@
  * Controller of the stravaWorkoutsApp
  */
 angular.module('stravaWorkoutsApp')
-  .config(function($locationProvider) {
+  .config(function($locationProvider, RestangularProvider) {
   	$locationProvider.html5Mode(true);
+    RestangularProvider.setBaseUrl('https://www.strava.com/api/v3');
+    RestangularProvider.setJsonp(true);
+    RestangularProvider.setDefaultRequestParams('jsonp', {callback: 'JSON_CALLBACK'});
   })
   .controller('MainCtrl', function ($scope, $location, $window) {
 
