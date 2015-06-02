@@ -8,13 +8,10 @@
  * Controller of the stravaWorkoutsApp
  */
 angular.module('stravaWorkoutsApp')
-  .config(function($locationProvider, RestangularProvider) {
+  .config(function($locationProvider) {
   	$locationProvider.html5Mode(true);
-    RestangularProvider.setBaseUrl('https://www.strava.com/api/v3');
-    RestangularProvider.setJsonp(true);
-    RestangularProvider.setDefaultRequestParams('jsonp', {callback: 'JSON_CALLBACK'});
   })
-  .controller('MainCtrl', function ($scope, $location, $window) {
+  .controller('MainCtrl', function ($scope, $location, $window, $http) {
 
   	// Authenticate with Strava
   	// 2. Strava redirects here with access code
@@ -38,7 +35,28 @@ angular.module('stravaWorkoutsApp')
             // successful response
             // 4. Lambda function knows secret, exchanges code for token with secrent
             // 5. Lambda function returns the token as a parameter
-            $scope.access_token = data.Payload;
+            var access_token = angular.fromJson(data.Payload).access_token;
+
+            // 6. Retrieve list of Strava workouts since this past Monday
+            $http.jsonp('https://www.strava.com/api/v3/athlete/activities',
+              {
+                params: {
+                  access_token: access_token,
+                  callback: 'JSON_CALLBACK',
+                  before: 1432425600
+                }
+              }).
+              success(function(data, status, headers, config) {
+                console.log(data);
+              }).
+              error(function(data, status, headers, config) {
+                // TODO: handle gracefully
+                console.log(data);
+              });
+
+            $scope.swims = [1, 2];
+            $scope.bikes = [1, 2, 3];
+            $scope.runs = [1];
           }
         }
       );
@@ -50,10 +68,4 @@ angular.module('stravaWorkoutsApp')
   		return;
   	}
   	
-  	// 6. Retrieve list of Strava workouts since this past Monday
-    
-     
-    $scope.swims = [1, 2];
-    $scope.bikes = [1, 2, 3];
-    $scope.runs = [1];
   });
