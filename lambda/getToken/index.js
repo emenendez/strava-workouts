@@ -18,7 +18,7 @@ exports.handler = function(event, context) {
 		},
 		function(error, response, body) {
 			if(!error) {
-				context.succeed(body.access_token);
+				context.succeed({ access_token: body.access_token });
 			}
 			else {
 				context.fail(error);
