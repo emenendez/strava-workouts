@@ -43,7 +43,7 @@ angular.module('stravaWorkoutsApp')
                 params: {
                   access_token: access_token,
                   callback: 'JSON_CALLBACK',
-                  before: 1432425600  // TOOD: figure out correct timestamp
+                  after: 1432425600  // TOOD: figure out correct timestamp
                 }
               }).
               success(function(data, status, headers, config) {
