@@ -22,7 +22,10 @@ app.directive('progressBar', function () {
             title: '@',
             workouts: '='
         },
-        templateUrl: 'progress-bar.html'
+        templateUrl: 'progress-bar.html',
+        controller: function ($scope) {
+            $scope.incomplete = [1, 2, 3];
+        }
         // link: function ($scope, element, attrs) { } //DOM manipulation
     };
 });

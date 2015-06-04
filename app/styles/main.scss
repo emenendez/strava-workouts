@@ -1,6 +1,7 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 $brand-primary:         #FC4C02;
 $brand-info:            #aaaaaa;
+$grid-gutter-width:     10px;
 // $brand-success:         #5cb85c !default;
 // $brand-warning:         #f0ad4e !default;
 // $brand-danger:          #0000ff;
@@ -16,42 +17,59 @@ $brand-info:            #aaaaaa;
   padding: 0.2em 0;
 }
 
-body {
-  padding: 0;
-}
-
 /* Custom page footer */
 .footer {
   padding-top: 19px;
+  margin-top: 20px;
   color: #777;
   border-top: 1px solid #e5e5e5;
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
+/* Customize container */
+@media (min-width: 768px) {
   .container {
     max-width: 730px;
   }
-
 }
 
 /* Workout progress bars */
+.workouts {
+  @include make-row();
+}
 
 @mixin workout {
-  @extend .progress-bar;
-  width: 33%;
-  margin-right: 0.5%;
+  @include make-xs-column(4);
 
-  &:last-of-type {
-    margin-right: 0;
+  div {
+    background-color: $gray-lighter;
+    font-size: $font-size-small;
+    height: 4em;
+    padding: 6px;
   }
 }
 
 .complete {
   @include workout;
+  color: #fff;
+
+  div {
+    background-color: $brand-primary;
+
+    strong {
+      white-space: nowrap;
+      overflow: hidden;
+      display: block;
+      text-overflow: ellipsis;
+      font-size: $font-size-base;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
 }
 
 .incomplete {
   @include workout;
-  @extend .progress-bar-info;
 }

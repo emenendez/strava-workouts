@@ -1,4 +1,14 @@
 <h2>{{ title }}</h2>
-<div class="progress">
-	<div class="complete" ng-repeat="workout in workouts | limitTo: 3">{{ workout.name }}</div>
+<div class="workouts">
+	<div class="complete" ng-repeat="workout in workouts | limitTo: 3">
+		<a href="https://www.strava.com/activities/{{ workout.id }}" title="{{ workout.name }}">
+			<div>
+				<strong>{{ workout.name }}</strong>
+				{{ workout.distance / 1609.34 | number:1 }} mi &#8212; {{ workout.location_city }}, {{ workout.location_state }}
+			</div>
+		</a>
+	</div>
+	<div class="incomplete" ng-repeat="workout in incomplete | limitTo: 3-workouts.length">
+		<div></div>
+	</div>
 </div>
