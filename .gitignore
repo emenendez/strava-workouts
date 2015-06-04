@@ -1,7 +1,8 @@
 node_modules
 .tmp
 .sass-cache
-bower_components
+bower_components/*
+!dist/bower_components/bootstrap
 .env.js
 *.zip
 lambda/getToken/test.js
