@@ -32,6 +32,10 @@ $grid-gutter-width:     10px;
   }
 }
 
+h1 small {
+  display: inline-block;
+}
+
 /* Workout progress bars */
 .workouts {
   @include make-row();
@@ -61,6 +65,8 @@ $grid-gutter-width:     10px;
     strong {
       display: block;
       font-size: $font-size-base;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 
