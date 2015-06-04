@@ -54,12 +54,12 @@ $grid-gutter-width:     10px;
 
   div {
     background-color: $brand-primary;
-
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
     strong {
-      white-space: nowrap;
-      overflow: hidden;
       display: block;
-      text-overflow: ellipsis;
       font-size: $font-size-base;
     }
   }
